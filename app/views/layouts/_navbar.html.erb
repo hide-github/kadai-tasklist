@@ -12,8 +12,11 @@
         
   <!--　ログイン後 -->      
  <% if logged_in? %>       
-        
-        
+
+<!-- 課題提出の為、一時的に削除         
+        <li class="nav-item">
+<%= link_to 'ユーザリスト', users_path, class: 'nav-link' %>
+        </li>
         
         <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
@@ -24,6 +27,7 @@
               <li class="dropdown-item">
 <%= link_to 'ユーザ情報', tasks_path(current_user) %>
               </li>
+ここまで　-->              
               <li class="dropdown-divider"></li>
               <li class="dropdown-item">
 <%= link_to 'ログアウト', logout_path, method: :delete %>              
