@@ -1,6 +1,6 @@
 <header class="mb-4">
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">TaskBoard</a>
+    <a class="navbar-brand" href="/">TaskList Sesseion_id:<%= session[:user_id] %> Current_user:<%= current_user %></a>
     <!-- 横幅が狭い時に出るハンバーガーボタン -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
@@ -9,9 +9,45 @@
     <!-- メニュー項目 -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
+        
+  <!--　ログイン後 -->      
+ <% if logged_in? %>       
+        
         <li class="nav-item">
-<%= link_to  '新規タスクの投稿', new_task_path, class: 'nav-link' %>
-</li>
+<%= link_to 'ユーザリスト', users_path, class: 'nav-link' %>
+        </li>
+        
+        <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+<%= current_user.name %>さん
+            </a>
+            
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li class="dropdown-item">
+<%= link_to 'ユーザ情報', tasks_path(current_user) %>
+              </li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-item">
+<%= link_to 'ログアウト', logout_path, method: :delete %>              
+              </li>
+            </ul>
+          </li>
+        
+        
+        
+        
+  <!-- ログイン前 -->      
+  <% else %>     
+  
+        <!-- ナビゲーションバーの項目設定--> 
+        <li class="nav-item">
+<%= link_to  'ユーザ登録', signup_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+<%= link_to 'ログイン', login_path, class: 'nav-link' %>          
+        </li>
+        
+<% end %>        
       </ul>
     </div>
   </nav>

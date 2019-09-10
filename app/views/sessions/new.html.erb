@@ -1,0 +1,22 @@
+<h1>ログインページ</h1>
+
+<%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+
+<%= f.label :email, 'メールアドレス' %>
+<%= f.text_field :email %>
+
+<br>
+
+<%= f.label :password, 'パスワード' %>
+<%= f.password_field :password %>
+
+<br>
+
+<%= f.submit '送信' %>
+
+<% end %>
+
+<P>
+初めての方はこちら
+<%= link_to 'ユーザ登録', signup_path %>
+</P>

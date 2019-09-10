@@ -1,0 +1,15 @@
+<% if logged_in? %>
+<p>ログイン完了ユーザページ：<%= current_user.name %></p>
+
+<% else %>
+
+<div class="center jumbotron">
+    <div class="text-center">
+        <h1>Tasklist Application</h1>
+        
+<%= link_to 'ユーザ登録', signup_path, class: 'btn btn-lg btn-primary' %>
+    </div>    
+</div>
+
+
+<% end %>
